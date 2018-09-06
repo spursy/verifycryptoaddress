@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 2 | Log in</title>
+</head>
+<body class="hold-transition login-page">
+<!-- /.login-box -->
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<!-- AdminLTE App -->
+<script src='./http_util.js'></script>
+
+<script>
+     $(document).ready(function(){ 
+            let base_url = "http://127.0.0.1:3010/address/verify";
+            // test_verify_btc(base_url);
+            // test_verify_eth(base_url);
+            // test_verify_eos(base_url);
+            // test_verify_xrp(base_url);
+            test_verify_usdt(base_url);
+
+            let check_address_url = "http://127.0.0.1:3010/address/check";
+            let btc_address = "18cBEMRxXHqzWWCxZNtU91F5sbUNKhL5PX";
+            let btc_address_01 = "1Ft9S4pwazQ9hfcLMmdJShNzqLhWGzhmUF";
+            let testnet_btc_address = "2N4k2CMLwTeC5tR4C54QEH2hP8wui8Aje5b";
+            let nettype = "testnet"
+            check_address_type(check_address_url, btc_address_01);
+    });
+    
+    let test_verify_btc = function(base_url) {
+        httpUtil.httpReq({url: base_url, method: "post", data: {
+            address: "1KFzzGtDdnq5hrwxXGjwVnKzRbvf8WVxck",
+            symbol: "btc"
+        }, onSuccess: function(data) {
+            // alert('Test User Login API >>> ' + JSON.stringify(data));
+            console.log('Test btc address >>> ' + JSON.stringify(data));
+        }});
+    };
+    let test_verify_usdt = function(base_url) {
+        httpUtil.httpReq({url: base_url, method: "post", data: {
+            address: "1FwADyEvdvaLNxjN1v3q6tNJCgHEBuABrS",
+            symbol: "usdt"
+        }, onSuccess: function(data) {
+            // alert('Test User Login API >>> ' + JSON.stringify(data));
+            console.log('Test usdt address >>> ' + JSON.stringify(data));
+        }});
+    };
+    let test_verify_eth = function(base_url) {
+        httpUtil.httpReq({url: base_url, method: "post", data: {
+            address: "0x689c56aef474df92d44a1b70850f808488f9769c",
+            symbol: "eth"
+        }, onSuccess: function(data) {
+            // alert('Test User Login API >>> ' + JSON.stringify(data));
+            console.log('Test eth address >>> ' + JSON.stringify(data));
+        }});
+    };
+    let test_verify_eos = function(base_url) {
+        httpUtil.httpReq({url: base_url, method: "post", data: {
+            address: "chubideposit",
+            symbol: "eos"
+        }, onSuccess: function(data) {
+            // alert('Test User Login API >>> ' + JSON.stringify(data));
+            console.log('Test eos address >>> ' + JSON.stringify(data));
+        }});
+    };
+    let test_verify_xrp = function(base_url) {
+        httpUtil.httpReq({url: base_url, method: "post", data: {
+            address: "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+            symbol: "xrp"
+        }, onSuccess: function(data) {
+            // alert('Test User Login API >>> ' + JSON.stringify(data));
+            console.log('Test xrp address >>> ' + JSON.stringify(data));
+        }});
+    };
+    let check_address_type = function(base_url, address, nettype) {
+        httpUtil.httpReq({url: base_url, method: "post", data: {
+            address: address,
+            nettype: nettype
+        }, onSuccess: function(data) {
+            // alert('Test User Login API >>> ' + JSON.stringify(data));
+            console.log('Test address type >>> ' + JSON.stringify(data));
+        }});
+    }
+</script>
+</body>
+</html>
